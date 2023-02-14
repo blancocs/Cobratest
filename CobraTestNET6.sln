@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CobraTestNET6", "CobraTestNET6\CobraTestNET6.csproj", "{E78C837F-AD2A-4A2B-8519-17602535C1AF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorApp", "BlazorApp\BlazorApp.csproj", "{56FC2732-4ADF-4C6F-83E3-879A2EDB661C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E78C837F-AD2A-4A2B-8519-17602535C1AF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E78C837F-AD2A-4A2B-8519-17602535C1AF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E78C837F-AD2A-4A2B-8519-17602535C1AF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E78C837F-AD2A-4A2B-8519-17602535C1AF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{56FC2732-4ADF-4C6F-83E3-879A2EDB661C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{56FC2732-4ADF-4C6F-83E3-879A2EDB661C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{56FC2732-4ADF-4C6F-83E3-879A2EDB661C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{56FC2732-4ADF-4C6F-83E3-879A2EDB661C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E3179329-09CF-4948-A0A8-3E86AAB1615E}
+	EndGlobalSection
+EndGlobal

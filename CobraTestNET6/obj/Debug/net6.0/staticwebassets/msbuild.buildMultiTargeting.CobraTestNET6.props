@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\CobraTestNET6.props" />
+</Project>

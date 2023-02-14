@@ -1,0 +1,114 @@
+﻿@page "/fetchdata"
+@inject HttpClient Http
+
+<PageTitle>Car details</PageTitle>
+
+<h1>Car details</h1>
+
+@if (lstCrs == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Make</th>
+                <th>Model</th>
+                <th>Year.</th>
+                <th>Doors</th>
+                <th>Color</th>
+                <th>set your value</th>
+                <th>Compare</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var car in lstCrs)
+            {
+                <tr>
+                    <td>@car.Make</td>
+                    <td>@car.Model</td>
+                    <td>@car.Year</td>
+                    <td>@car.Doors</td>
+                    <td>@car.Color</td>
+                    <td><input type="number" @bind-value= "@car.CustomerPrice"/></td>
+                    <td><button type="button" @onclick="() => ShowPosition(car.Id)">Click</button></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    @if (isPriceCorrect)
+    {
+        <ModalDialog Title="Great Job"
+                 Text="Great Job! Price difference is under 5000 dollars!"
+                 OnClose="@OnDialogClose"
+                 DialogType="ModalDialog.ModalDialogType.Ok">
+        </ModalDialog>
+    }
+
+    
+}
+
+@code {
+    private List<Car> lstCrs;
+    public string url = "https://localhost:7133/api/Car";
+    public bool isPriceCorrect { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+
+        lstCrs = await Http.GetFromJsonAsync<List<Car>>(url);
+    }
+
+    private async Task ShowPosition(int i)
+    {
+        var car = lstCrs.FirstOrDefault(c => c.Id == i);
+        var price = car.Price;
+        var customerPrice = car.CustomerPrice;
+
+        if (Math.Abs(price- customerPrice) <=5000)
+        {
+            await OpenDialog();
+        }
+    }
+
+
+    private async Task OpenDialog()
+    {
+        isPriceCorrect = true;
+        
+        StateHasChanged();
+
+
+        await Task.Delay(2000);
+        isPriceCorrect = false;
+        StateHasChanged();
+    }
+
+    private void OnDialogClose()
+    {
+        isPriceCorrect = false;
+        StateHasChanged();
+    }
+
+
+    public class Car
+    {
+        public int Id { get; set; }
+
+        public string Make { get; set; } = null!;
+
+        public string Model { get; set; } = null!;
+
+        public int Year { get; set; }
+        public int Doors { get; set; }
+
+        public string Color { get; set; } = null!;
+
+        public decimal Price { get; set; }
+        public decimal CustomerPrice { get; set; }
+    }
+}
